@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] numbers) {
+        int[] x = {1,2,3,4,5,6,7,8,9,0};
+        int result = 0;
+        List<Integer> list = new ArrayList<>();
+        for (int n : numbers) list.add(n);
+
+        for (int num : x) {
+            if (!list.contains(num)) result += num;
+        }
+        return result;
+    }
+}
