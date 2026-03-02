@@ -1,0 +1,22 @@
+class Solution {
+    public String solution(String s) {
+        String[] arrayX = s.split("");
+        StringBuilder resultX = new StringBuilder();
+        int count = 0;
+        for (int i=0; i<s.length(); i++) {
+            if(arrayX[i].equals(" ")) {
+                count = 0;
+            } else {
+                if (count % 2 == 0) {
+                    arrayX[i] = arrayX[i].toUpperCase();
+                    count++;
+                } else {
+                    arrayX[i] = arrayX[i].toLowerCase();
+                    count++;
+                }
+            }
+            resultX.append(arrayX[i]);
+        }
+        return resultX.toString();
+    }
+}
