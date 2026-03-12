@@ -1,0 +1,31 @@
+import java.util.HashSet;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        HashSet<Integer> lostSet = new HashSet<>();
+        for (int x : lost) lostSet.add(x);
+        HashSet<Integer> reserveSet = new HashSet<>();
+        for (int x : reserve) {
+            if (lostSet.contains(x)) {
+                lostSet.remove(x);
+            } else {
+                reserveSet.add(x);
+            }
+        }
+
+        int count = n - lostSet.size();
+        for (int i=1; i<=n; i++) {
+            if ((lostSet.contains(i) && reserveSet.contains(i-1))) {
+                lostSet.remove(i);
+                reserveSet.remove(i-1);
+                count++;
+            } else if ((lostSet.contains(i) && reserveSet.contains(i+1))) {
+                lostSet.remove(i);
+                reserveSet.remove(i+1);
+                count++;
+            }
+
+        }
+        return count;
+    }
+}
